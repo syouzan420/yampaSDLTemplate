@@ -8,11 +8,8 @@ import System.Random (StdGen)
 import Inputs (Inputs(..))
 import MyData (MyData(..))
 
-mainSF :: StdGen -> MyData -> SF Inputs MyData 
-mainSF rgen md = update rgen md 
-
-update :: StdGen -> MyData -> SF Inputs MyData
-update rgen md = proc i -> do
+mainSF :: StdGen -> MyData -> SF Inputs MyData
+mainSF rgen md = proc i -> do
     rec
        let nmd = md{mdDouble=p}
        v1 <- arr setVel -< (i,0)
