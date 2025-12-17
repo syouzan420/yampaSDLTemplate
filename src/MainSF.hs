@@ -10,16 +10,16 @@ import IOAction (ioact)
 import MyData (MyData(..))
 
 mainSF :: StdGen -> MyData -> SF Inputs (IO ()) 
-mainSF rgen wd = update rgen wd >>> arr ioact 
+mainSF rgen md = update rgen md >>> arr ioact 
 
 update :: StdGen -> MyData -> SF Inputs MyData
-update rgen wd = proc i -> do
+update rgen md = proc i -> do
     rec
-       let nwd = wd{mdDouble=p}
+       let nmd = md{mdDouble=p}
        v1 <- arr setVel -< (i,0)
        v <- (1 ^+^) ^<< integral -< v1 
        p <- (10 ^+^) ^<< integral -< v
-    returnA -< nwd 
+    returnA -< nmd 
 
 setVel :: (Inputs,Double) -> Double
 setVel (i,v)

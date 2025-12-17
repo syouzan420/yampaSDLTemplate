@@ -5,6 +5,6 @@ import SDLDraw (draw)
 import MyData (MyData(mdRenderer))
 
 ioact :: MyData -> IO ()
-ioact wd = do
-  let renderer = mdRenderer wd
-  withRenderer renderer $ draw wd
+ioact md = do
+  let renderer = mdRenderer md
+  withRenderer renderer $ draw md

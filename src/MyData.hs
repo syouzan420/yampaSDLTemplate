@@ -23,7 +23,7 @@ title :: Text
 title = "MyApp"
 
 windowSize :: V2 CFloat
-windowSize = V2 140 160 
+windowSize = V2 144 160 
 
 defaultImagePath :: String
 defaultImagePath = "resources/images/default.png"

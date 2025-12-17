@@ -6,8 +6,8 @@ import SDL.Primitive (fillCircle)
 import MyData (MyData(mdRenderer,mdDouble))
 
 draw :: MyData -> IO ()
-draw wd = do 
-  let renderer = mdRenderer wd
-  let i = mdDouble wd
+draw md = do 
+  let renderer = mdRenderer md
+  let i = mdDouble md
   fillCircle renderer (V2 60 (10+fromIntegral(floor i))) 10 (V4 102 178 255 255)
   putStrLn ("Hello " ++ show i)
