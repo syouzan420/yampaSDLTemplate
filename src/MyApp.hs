@@ -18,9 +18,8 @@ import MainSF (mainSF)
 import MyData (loadMyData,MyData)
 
 appMain :: IO ()
-appMain = withSDL $ do 
-    withSDLAudio $ do
-      withSDLVideo $ \renderer -> do
+appMain = withSDL $  withSDLAudio $ withSDLVideo $
+      \renderer -> do
         md <- loadMyData renderer
         withIORefInit $ \tRef -> do
           rgen <- getStdGen
