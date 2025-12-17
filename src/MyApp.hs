@@ -12,9 +12,10 @@ import WithSDL (withSDL)
 import WithSDLAudio (withSDLAudio)
 import WithSDLVideo (withSDLVideo)
 import WithIORef (withIORefInit,getTimeDifference)
+import IOAction (ioact)
 import Inputs (initInput,readInputs,Inputs(inpQ))
 import MainSF (mainSF)
-import MyData (loadMyData)
+import MyData (loadMyData,MyData)
 
 appMain :: IO ()
 appMain = withSDL $ do 
@@ -42,5 +43,5 @@ isQuit QuitEvent = True
 isQuit (WindowClosedEvent _) = True
 isQuit _ = False
   
-output ::  Bool -> IO () -> IO Bool
-output _ ioact = ioact >> return False
+output ::  Bool -> MyData -> IO Bool
+output _ md = ioact md >> return False

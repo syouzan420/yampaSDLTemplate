@@ -6,11 +6,10 @@ import FRP.Yampa (integral,returnA,arr,SF,(^<<),(>>>),(^+^))
 import System.Random (StdGen)
 
 import Inputs (Inputs(..))
-import IOAction (ioact)
 import MyData (MyData(..))
 
-mainSF :: StdGen -> MyData -> SF Inputs (IO ()) 
-mainSF rgen md = update rgen md >>> arr ioact 
+mainSF :: StdGen -> MyData -> SF Inputs MyData 
+mainSF rgen md = update rgen md 
 
 update :: StdGen -> MyData -> SF Inputs MyData
 update rgen md = proc i -> do
