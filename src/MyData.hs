@@ -7,6 +7,7 @@ import qualified SDL.Image as I
 import qualified Data.Map as M
 import Foreign.C.Types (CFloat)
 import Data.Maybe (fromMaybe)
+import Data.Point2 (Point2(..))
 import Control.Exception (handle,SomeException)
 
 import Data.Text (Text)
@@ -17,6 +18,7 @@ data MyData = MyData {
     mdRenderer :: !Renderer
    ,mdGetSprite :: !(SpriteName -> Texture)
    ,mdDouble :: !Double
+   ,mdPlayerPos :: !(Point2 CFloat)
 }
 
 title :: Text
@@ -46,5 +48,6 @@ loadMyData renderer = do
     mdRenderer = renderer
    ,mdGetSprite = fromMaybe defaultTexture . (`M.lookup` sprites)
    ,mdDouble = 0
+   ,mdPlayerPos = Point2 10 10
   }
 

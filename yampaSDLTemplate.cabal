@@ -53,6 +53,7 @@ library
     , sdl2-image
     , sdl2-mixer
     , sdl2-ttf
+    , simple-affine-space
     , text
     , time
   default-language: Haskell2010
@@ -76,6 +77,7 @@ executable yampaSDLTemplate-exe
     , sdl2-image
     , sdl2-mixer
     , sdl2-ttf
+    , simple-affine-space
     , text
     , time
     , yampaSDLTemplate
@@ -101,6 +103,7 @@ test-suite yampaSDLTemplate-test
     , sdl2-image
     , sdl2-mixer
     , sdl2-ttf
+    , simple-affine-space
     , text
     , time
     , yampaSDLTemplate

@@ -3,8 +3,9 @@ module SDLDraw (draw) where
 import SDL (V4(V4),V2(V2),Point(P))
 import SDL.Video.Renderer (copy,Rectangle(..))
 import SDL.Primitive (fillCircle)
+import Data.Point2 (Point2(..))
 
-import MyData (MyData(mdRenderer,mdGetSprite,mdDouble))
+import MyData (MyData(mdRenderer,mdGetSprite,mdDouble,mdPlayerPos))
 import SpriteName (SpriteName(PlayerFrontLeft))
 
 draw :: MyData -> IO ()
@@ -13,6 +14,9 @@ draw md = do
   let getSprite = mdGetSprite md
   let playerImage = getSprite PlayerFrontLeft
   let i = mdDouble md
+  let (Point2 px py) = mdPlayerPos md
+  let px' = fromIntegral (floor px)
+  let py' = fromIntegral (floor py)
   fillCircle renderer (V2 60 (10+fromIntegral(floor i))) 10 (V4 102 178 255 255)
-  copy renderer playerImage Nothing (Just (Rectangle (P (V2 10 10)) (V2 16 16)))
+  copy renderer playerImage Nothing (Just (Rectangle (P (V2 px' py')) (V2 16 16)))
   putStrLn ("Hello " ++ show i)
